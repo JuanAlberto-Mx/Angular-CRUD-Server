@@ -34,7 +34,7 @@ e2e/*.map
 .DS_Store/
 
 ### dotenv ###
-.env
+*.env
 
 ### Node ###
 # Logs
