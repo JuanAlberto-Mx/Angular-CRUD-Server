@@ -10,6 +10,9 @@ const app = express();
 // Connect to the database
 dbConnection();
 
+// Enable the application to receive JSON format objects
+app.use(express.json());
+
 // Use the product route every time the user enter the path '/api/products'
 app.use('/api/products', require('./routes/product'));
 
