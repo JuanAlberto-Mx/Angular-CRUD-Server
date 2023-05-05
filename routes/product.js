@@ -10,4 +10,7 @@ const productController = require('../controllers/productController');
 // Defining the path equivalent to 'api/products' related to POST method
 router.post('/', productController.createProduct);
 
+// Defining the path equivalent to 'api/products' related to GET method
+router.get('/', productController.getProducts);
+
 module.exports = router;
