@@ -19,4 +19,7 @@ router.get('/:id', productController.getProduct);
 // Defining the path equivalent to 'api/products/<id_product>' related to PUT method
 router.put('/:id', productController.updateProduct);
 
+// Defining the path equivalent to 'api/products/<id_product>' related to DELETE method
+router.delete('/:id', productController.deleteProduct);
+
 module.exports = router;
