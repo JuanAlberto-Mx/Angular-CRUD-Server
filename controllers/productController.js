@@ -90,3 +90,26 @@ exports.getProduct = async (req, resp) => {
         resp.status(500).send('It is not possible to obtain the products');
     }
 };
+
+exports.deleteProduct = async (req, resp) => {
+    try {
+        // Obtaining the product by using the id parameter
+        let product = await Product.findById(req.params.id);
+
+        if(!product) {
+            resp.status(404).json({msg:'The product requested does not exist'})
+        }
+
+        // Delete the product related to the id received
+        await Product.findByIdAndDelete({_id: req.params.id});
+
+        // Return the message in a JSON format
+        resp.json({msg:'Product deleted successfully'});
+    }
+    catch(error) {
+        console.log(error);
+
+        // Sending a response to the user
+        resp.status(500).send('It is not possible to delete the product');
+    }
+}
