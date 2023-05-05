@@ -13,6 +13,9 @@ router.post('/', productController.createProduct);
 // Defining the path equivalent to 'api/products' related to GET method
 router.get('/', productController.getProducts);
 
+// Defining the path equivalent to 'api/products/<id_product>' related to GET method
+router.get('/:id', productController.getProduct);
+
 // Defining the path equivalent to 'api/products/<id_product>' related to PUT method
 router.put('/:id', productController.updateProduct);
 
