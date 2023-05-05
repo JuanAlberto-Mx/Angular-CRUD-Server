@@ -1,6 +1,9 @@
 // Import the express functionality
 const express = require('express');
 
+// Import the CORS functionalities
+const cors = require('cors');
+
 // Import the dbConnection functionalities
 const dbConnection = require('./config/dbconnection');
 
@@ -9,6 +12,9 @@ const app = express();
 
 // Connect to the database
 dbConnection();
+
+// Enable CORS
+app.use(cors());
 
 // Enable the application to receive JSON format objects
 app.use(express.json());
