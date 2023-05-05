@@ -38,3 +38,35 @@ exports.getProducts = async (req, resp) => {
         resp.status(500).send('It is not possible to obtain the products');
     }
 };
+
+exports.updateProduct = async (req, resp) => {
+    try {
+        // Set the structure of the product according to the schema created previously
+        const {name, category, location, price} = req.body;
+
+        // Obtaining the product by using the id parameter
+        let product = await Product.findById(req.params.id);
+
+        if(!product) {
+            resp.status(404).json({msg:'The product requested does not exist'})
+        }
+
+        // Set the product object with the values obtained from the request body
+        product.name = name;
+        product.category = category;
+        product.location = location;
+        product.price = price;
+
+        // Updating the product with the new values by using the findOneAndUpdate method
+        product = await Product.findOneAndUpdate({_id: req.params.id}, product, {new: true});
+
+        // Sending a product object in JSON format as a response
+        resp.json(product);
+    }
+    catch(error) {
+        console.log(error);
+
+        // Sending a response to the user
+        resp.status(500).send('It is not possible to update the product');
+    }
+}
