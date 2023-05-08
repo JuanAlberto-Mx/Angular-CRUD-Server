@@ -101,7 +101,7 @@ exports.deleteProduct = async (req, resp) => {
         }
 
         // Delete the product related to the id received
-        await Product.findByIdAndDelete({_id: req.params.id});
+        await Product.findOneAndRemove({_id: req.params.id});
 
         // Return the message in a JSON format
         resp.json({msg:'Product deleted successfully'});
